@@ -101,17 +101,20 @@
   <link rel="manifest" href="assets/icons/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css?v=5">
-  <link rel="stylesheet" href="css/landing.css?v=5">
-  <link rel="stylesheet" href="css/studio.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css?v=6">
+  <link rel="stylesheet" href="css/landing.css?v=6">
+  <link rel="stylesheet" href="css/studio.css?v=6">
 </head>
 <body>
   <header class="topbar">
     <a href="./" class="brand"><img src="assets/logo-dark.png" alt="Sparsh 360 — Doors | Interiors | Laminates" width="319" height="124"></a>
     <nav class="steps" aria-label="Progress">
-      <span data-step="1" class="on"><i>1</i>Photo</span><span data-step="2"><i>2</i>Mark door</span><span data-step="3"><i>3</i>Choose design</span>
+      <span data-step="1" class="on"><i>1</i><b data-i18n="step1">Photo</b></span><span data-step="2"><i>2</i><b data-i18n="step2">Mark door</b></span><span data-step="3"><i>3</i><b data-i18n="step3">Choose design</b></span>
     </nav>
+    <div class="lang" role="group" aria-label="Language" data-i18n-aria="langAria">
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button><button type="button" data-lang="hi" lang="hi" aria-pressed="false" aria-label="हिन्दी">हिं</button><button type="button" data-lang="gu" lang="gu" aria-pressed="false" aria-label="ગુજરાતી">ગુ</button>
+    </div>
   </header>
 
   <!-- Step 1: photo -->
@@ -120,25 +123,29 @@
       <div class="hero-inner">
         <div class="hero-text">
           <p class="eyebrow reveal"><span class="eyebrow-dot" aria-hidden="true"></span>Sparsh 360 Door Studio</p>
-          <h1 id="heroTitle" class="reveal">See your new door <em>on your own wall</em></h1>
+          <h1 id="heroTitle" class="reveal" data-i18n-html="heroTitle">See your new door <em>on your own wall</em></h1>
           <p class="tagline reveal" lang="hi">हर कोने में स्पर्श का एहसास</p>
-          <p class="lead reveal">Photograph your wall, mark the door and try over 1,100 premium lamination designs in seconds. Free, no app needed.</p>
+          <p class="lead reveal" data-i18n="heroLead">Photograph your wall, mark the door and try over 1,100 premium lamination designs in seconds. Free, no app needed.</p>
           <div class="cta reveal">
             <label class="btn btn-gold btn-lg">
               <input type="file" accept="image/*" capture="environment" id="camInput" class="sr-only">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.4-2h6.6l1.4 2h1.8A2.5 2.5 0 0 1 21 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>
-              Take a photo
+              <span data-i18n="takePhoto">Take a photo</span>
             </label>
             <label class="btn btn-light btn-lg">
               <input type="file" accept="image/*" id="fileInput" class="sr-only">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="9.5" r="1.6"/><path d="m21 15-4.5-4.5L7 20"/></svg>
-              Upload from gallery
+              <span data-i18n="upload">Upload from gallery</span>
             </label>
           </div>
+          <div class="rooms reveal" id="rooms" hidden>
+            <p class="rooms-label" data-i18n="roomsLabel">No photo handy? Try a sample room</p>
+            <div class="rooms-list" id="roomsList"></div>
+          </div>
           <ul class="hero-stats reveal" aria-label="At a glance">
-            <li><b>1,100+</b><span>door designs</span></li>
-            <li><b>4</b><span>leading brands</span></li>
-            <li><b>Free</b><span>no app to install</span></li>
+            <li><b>1,100+</b><span data-i18n="statDesigns">door designs</span></li>
+            <li><b>4</b><span data-i18n="statBrands">leading brands</span></li>
+            <li><b data-i18n="statFree">Free</b><span data-i18n="statNoApp">no app to install</span></li>
           </ul>
         </div>
 
@@ -157,27 +164,27 @@
     <section class="how-sec" aria-labelledby="howTitle">
       <div class="wrap">
         <header class="sec-head">
-          <p class="kicker">How it works</p>
-          <h2 id="howTitle">Three steps to your perfect door</h2>
+          <p class="kicker" data-i18n="howKicker">How it works</p>
+          <h2 id="howTitle" data-i18n="howTitle">Three steps to your perfect door</h2>
         </header>
         <ol class="how">
           <li class="how-card">
             <span class="how-num">01</span>
             <span class="how-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17a4 4 0 0 1 4-4h4l3-4h14l3 4h4a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><circle cx="24" cy="25" r="7"/><circle cx="24" cy="25" r="2.5" fill="currentColor" stroke="none" opacity=".35"/><path d="M36 19h2"/></svg></span>
-            <h3>Photograph your wall</h3>
-            <p>Stand straight in front of the doorway and keep the whole frame in the picture.</p>
+            <h3 data-i18n="how1t">Photograph your wall</h3>
+            <p data-i18n="how1p">Stand straight in front of the doorway and keep the whole frame in the picture.</p>
           </li>
           <li class="how-card">
             <span class="how-num">02</span>
             <span class="how-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h20v34H14z" stroke-dasharray="3 3.5"/><circle cx="14" cy="8" r="3.5" fill="currentColor"/><circle cx="34" cy="8" r="3.5" fill="currentColor"/><circle cx="14" cy="42" r="3.5" fill="currentColor"/><circle cx="34" cy="42" r="3.5" fill="currentColor"/><path d="M29 25h1.5"/></svg></span>
-            <h3>Mark the door</h3>
-            <p>Drag the four gold dots onto the corners of your door. A magnifier helps you place them exactly.</p>
+            <h3 data-i18n="how2t">Mark the door</h3>
+            <p data-i18n="how2p">Drag the four gold dots onto the corners of your door. A magnifier helps you place them exactly.</p>
           </li>
           <li class="how-card">
             <span class="how-num">03</span>
             <span class="how-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="18" height="36" rx="1.5"/><path d="M13 12h8v10h-8zM13 27h8v9h-8z"/><path d="M30 14l5-3 5 3M35 11v12"/><path d="M31 31.5a6 6 0 1 0 2-4.5"/><path d="M31 24v3.5h3.5"/></svg></span>
-            <h3>Choose &amp; share</h3>
-            <p>Tap any design to see it on your wall, then send the picture to us on WhatsApp for price and availability.</p>
+            <h3 data-i18n="how3t">Choose &amp; share</h3>
+            <p data-i18n="how3p">Tap any design to see it on your wall, then send the picture to us on WhatsApp for price and availability.</p>
           </li>
         </ol>
       </div>
@@ -186,14 +193,14 @@
     <section class="brands-sec" aria-labelledby="brandsTitle">
       <div class="wrap">
         <header class="sec-head">
-          <p class="kicker">The collection</p>
-          <h2 id="brandsTitle">Designs from India&rsquo;s trusted lamination brands</h2>
+          <p class="kicker" data-i18n="brandsKicker">The collection</p>
+          <h2 id="brandsTitle" data-i18n-html="brandsTitle">Designs from India&rsquo;s trusted lamination brands</h2>
         </header>
         <ul class="brand-grid">
-          <li class="brand-card"><a href="designs/aastha.html"><img src="doors/aastha-hd/t/wl-dg-1032.jpg" alt="Aastha lamination door design" loading="lazy" decoding="async"><div><b>Aastha</b><span>479 designs</span></div></a></li>
-          <li class="brand-card"><a href="designs/ramdev.html"><img src="doors/ramdev-2/t/rd-272.jpg" alt="Ramdev lamination door design" loading="lazy" decoding="async"><div><b>Ramdev</b><span>250 designs</span></div></a></li>
-          <li class="brand-card"><a href="designs/deluxe.html"><img src="doors/deluxe/t/dx-3184.jpg" alt="Deluxe lamination door design" loading="lazy" decoding="async"><div><b>Deluxe</b><span>206 designs</span></div></a></li>
-          <li class="brand-card"><a href="designs/wonder-sign.html"><img src="doors/wonder/t/wonder-90.jpg" alt="Wonder Sign lamination door design" loading="lazy" decoding="async"><div><b>Wonder Sign</b><span>197 designs</span></div></a></li>
+          <li class="brand-card"><a href="designs/aastha.html"><img src="doors/aastha-hd/t/wl-dg-1032.jpg" alt="Aastha lamination door design" loading="lazy" decoding="async"><div><b>Aastha</b><span data-i18n="nDesigns" data-n="479">479 designs</span></div></a></li>
+          <li class="brand-card"><a href="designs/ramdev.html"><img src="doors/ramdev-2/t/rd-272.jpg" alt="Ramdev lamination door design" loading="lazy" decoding="async"><div><b>Ramdev</b><span data-i18n="nDesigns" data-n="250">250 designs</span></div></a></li>
+          <li class="brand-card"><a href="designs/deluxe.html"><img src="doors/deluxe/t/dx-3184.jpg" alt="Deluxe lamination door design" loading="lazy" decoding="async"><div><b>Deluxe</b><span data-i18n="nDesigns" data-n="206">206 designs</span></div></a></li>
+          <li class="brand-card"><a href="designs/wonder-sign.html"><img src="doors/wonder/t/wonder-90.jpg" alt="Wonder Sign lamination door design" loading="lazy" decoding="async"><div><b>Wonder Sign</b><span data-i18n="nDesigns" data-n="197">197 designs</span></div></a></li>
         </ul>
       </div>
     </section>
@@ -201,17 +208,17 @@
     <section class="faq-sec" aria-labelledby="faqTitle">
       <div class="wrap">
         <header class="sec-head">
-          <p class="kicker">Questions</p>
-          <h2 id="faqTitle">Lamination doors &amp; the Door Studio — FAQ</h2>
+          <p class="kicker" data-i18n="faqKicker">Questions</p>
+          <h2 id="faqTitle" data-i18n-html="faqTitle">Lamination doors &amp; the Door Studio — FAQ</h2>
         </header>
         <div class="faq-list">
-          <details open><summary>How can I see a lamination door design on my own wall?</summary><p>Open the Sparsh 360 Door Studio, take or upload a photo of your wall, drag the four dots onto the corners of the door frame, then tap any design. The door is shown on your wall in the right perspective. It is free and works in your phone browser without any app.</p></details>
-          <details><summary>How many lamination door designs does Sparsh 360 have?</summary><p>Over 1,100 lamination door designs from Aastha, Ramdev, Deluxe and Wonder Sign. Every design has a code, for example RD-114 or WL-DG-1026, that you can quote when you enquire. <a href="designs/">Browse all designs</a>.</p></details>
-          <details><summary>What is a lamination door?</summary><p>A lamination door is a door finished with a decorative laminate sheet printed with wood grains, patterns or artwork. Laminated doors are durable, easy to clean, resist moisture and scratches better than paint, and come in hundreds of designs at an affordable price.</p></details>
-          <details><summary>What is the price of a lamination door?</summary><p>The price depends on the design, door size and finish. Choose a design in the Door Studio and send it to Sparsh 360 on WhatsApp at <a href="https://wa.me/917043588033">+91 70435 88033</a> to get the exact price, sizes and delivery time.</p></details>
-          <details><summary>How do I order a door I like?</summary><p>Tap Share on WhatsApp in the Door Studio to send the picture of the door on your wall with its design code, or tap Chat with us. The Sparsh 360 team will reply with price and availability, and you can also see it in our showroom in Vadodara.</p></details>
-          <details><summary>Where can I buy lamination doors in Vadodara?</summary><p>Sparsh 360 in Vadodara, Gujarat sells lamination doors, interiors and laminates, with over 1,100 door designs from Aastha, Ramdev, Deluxe and Wonder Sign. Try any design on your wall in the free Door Studio, then WhatsApp <a href="https://wa.me/917043588033">+91 70435 88033</a> for price and delivery.</p></details>
-          <details><summary>Do I need to install an app or sign up?</summary><p>No. The Door Studio runs in any phone or laptop browser. Your photo stays on your device and is not uploaded anywhere.</p></details>
+          <details open><summary data-i18n="faq1q">How can I see a lamination door design on my own wall?</summary><p data-i18n-html="faq1a">Open the Sparsh 360 Door Studio, take or upload a photo of your wall, drag the four dots onto the corners of the door frame, then tap any design. The door is shown on your wall in the right perspective. It is free and works in your phone browser without any app.</p></details>
+          <details><summary data-i18n="faq2q">How many lamination door designs does Sparsh 360 have?</summary><p data-i18n-html="faq2a">Over 1,100 lamination door designs from Aastha, Ramdev, Deluxe and Wonder Sign. Every design has a code, for example RD-114 or WL-DG-1026, that you can quote when you enquire. <a href="designs/">Browse all designs</a>.</p></details>
+          <details><summary data-i18n="faq3q">What is a lamination door?</summary><p data-i18n-html="faq3a">A lamination door is a door finished with a decorative laminate sheet printed with wood grains, patterns or artwork. Laminated doors are durable, easy to clean, resist moisture and scratches better than paint, and come in hundreds of designs at an affordable price.</p></details>
+          <details><summary data-i18n="faq4q">What is the price of a lamination door?</summary><p data-i18n-html="faq4a">The price depends on the design, door size and finish. Choose a design in the Door Studio and send it to Sparsh 360 on WhatsApp at <a href="https://wa.me/917043588033">+91 70435 88033</a> to get the exact price, sizes and delivery time.</p></details>
+          <details><summary data-i18n="faq5q">How do I order a door I like?</summary><p data-i18n-html="faq5a">Tap Share on WhatsApp in the Door Studio to send the picture of the door on your wall with its design code, or tap Chat with us. The Sparsh 360 team will reply with price and availability, and you can also see it in our showroom in Vadodara.</p></details>
+          <details><summary data-i18n="faq6q">Where can I buy lamination doors in Vadodara?</summary><p data-i18n-html="faq6a">Sparsh 360 in Vadodara, Gujarat sells lamination doors, interiors and laminates, with over 1,100 door designs from Aastha, Ramdev, Deluxe and Wonder Sign. Try any design on your wall in the free Door Studio, then WhatsApp <a href="https://wa.me/917043588033">+91 70435 88033</a> for price and delivery.</p></details>
+          <details><summary data-i18n="faq7q">Do I need to install an app or sign up?</summary><p data-i18n-html="faq7a">No. The Door Studio runs in any phone or laptop browser. Your photo stays on your device and is not uploaded anywhere.</p></details>
         </div>
       </div>
     </section>
@@ -220,10 +227,10 @@
       <div class="wrap showroom-inner">
         <div class="showroom-img"><img src="assets/hero.jpg" alt="A Sparsh 360 wooden door in a warmly lit modern interior" width="650" height="306" loading="lazy" decoding="async"></div>
         <div class="showroom-text">
-          <p class="kicker kicker-light">Doors &middot; Interiors &middot; Laminates</p>
-          <h2 id="showroomTitle">Love a design? Come feel it in our showroom.</h2>
-          <p>Every door you try here is available at Sparsh 360 in Vadodara. Share your favourite on WhatsApp and our team will reply with price, finish options and delivery.</p>
-          <label class="btn btn-gold" for="camInput">Start with a photo</label>
+          <p class="kicker kicker-light" data-i18n-html="showKicker">Doors &middot; Interiors &middot; Laminates</p>
+          <h2 id="showroomTitle" data-i18n="showTitle">Love a design? Come feel it in our showroom.</h2>
+          <p data-i18n="showText">Every door you try here is available at Sparsh 360 in Vadodara. Share your favourite on WhatsApp and our team will reply with price, finish options and delivery.</p>
+          <label class="btn btn-gold" for="camInput" data-i18n="showBtn">Start with a photo</label>
         </div>
       </div>
     </section>
@@ -232,8 +239,8 @@
       <div class="wrap foot-inner">
         <img src="assets/logo-dark.png" alt="Sparsh 360" width="319" height="124" loading="lazy">
         <p class="foot-tag" lang="hi">हर कोने में स्पर्श का एहसास</p>
-        <nav class="foot-links" aria-label="Door designs"><a href="designs/">All door designs</a><a href="designs/aastha.html">Aastha</a><a href="designs/ramdev.html">Ramdev</a><a href="designs/deluxe.html">Deluxe</a><a href="designs/wonder-sign.html">Wonder Sign</a><a href="https://wa.me/917043588033">WhatsApp +91 70435 88033</a></nav>
-        <p class="foot-copy">&copy; Sparsh 360&trade; &middot; Doors | Interiors | Laminates &middot; Vadodara, Gujarat</p>
+        <nav class="foot-links" aria-label="Door designs"><a href="designs/" data-i18n="footAll">All door designs</a><a href="designs/aastha.html">Aastha</a><a href="designs/ramdev.html">Ramdev</a><a href="designs/deluxe.html">Deluxe</a><a href="designs/wonder-sign.html">Wonder Sign</a><a href="https://wa.me/917043588033">WhatsApp +91 70435 88033</a></nav>
+        <p class="foot-copy" data-i18n-html="footCopy">&copy; Sparsh 360&trade; &middot; Doors | Interiors | Laminates &middot; Vadodara, Gujarat</p>
       </div>
     </footer>
   </main>
@@ -253,18 +260,18 @@
           <g class="illo-dot"><circle cx="34" cy="132" r="9"/><text x="34" y="135.5">4</text></g>
         </svg>
         <div class="mark-copy">
-          <p class="eyebrow">Step 2 of 3</p>
-          <h2 id="markTitle">Mark the door corners</h2>
-          <p class="mark-lead">Drag the <b>4 numbered dots</b> onto the corners of the door frame.</p>
+          <p class="eyebrow" data-i18n="markEyebrow">Step 2 of 3</p>
+          <h2 id="markTitle" data-i18n="markTitle">Mark the door corners</h2>
+          <p class="mark-lead" data-i18n-html="markLead">Drag the <b>4 numbered dots</b> onto the corners of the door frame.</p>
           <ol class="corner-list">
-            <li><span>1</span>Top left</li>
-            <li><span>2</span>Top right</li>
-            <li><span>3</span>Bottom right</li>
-            <li><span>4</span>Bottom left</li>
+            <li><span>1</span><b data-i18n="cornerTL">Top left</b></li>
+            <li><span>2</span><b data-i18n="cornerTR">Top right</b></li>
+            <li><span>3</span><b data-i18n="cornerBR">Bottom right</b></li>
+            <li><span>4</span><b data-i18n="cornerBL">Bottom left</b></li>
           </ol>
           <p class="mark-tip">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
-            A magnifier appears while you drag. Drag inside the shape to move it all at once.
+            <span data-i18n="markTip">A magnifier appears while you drag. Drag inside the shape to move it all at once.</span>
           </p>
         </div>
       </section>
@@ -272,21 +279,21 @@
       <section class="mark-main">
         <div class="frame" id="markStage">
           <div class="stage">
-            <canvas id="markCanvas" aria-label="Your photo — drag the four corner dots onto the door"></canvas>
+            <canvas id="markCanvas" data-i18n-aria="markCanvas" aria-label="Your photo — drag the four corner dots onto the door"></canvas>
             <canvas id="loupe" width="140" height="140" hidden></canvas>
           </div>
         </div>
         <div class="mark-actions">
           <button class="btn btn-ghost btn-icon-text" data-go="1">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
-            <span>Change photo</span>
+            <span data-i18n="changePhoto">Change photo</span>
           </button>
           <button class="btn btn-ghost btn-icon-text" id="resetCorners">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>
-            <span>Reset</span>
+            <span data-i18n="reset">Reset</span>
           </button>
           <button class="btn btn-primary btn-next" id="toDesigns">
-            <span class="lbl-full">Next: choose design</span><span class="lbl-short">Choose design</span>
+            <span class="lbl-full" data-i18n="nextDesign">Next: choose design</span><span class="lbl-short" data-i18n="chooseDesign">Choose design</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
@@ -303,22 +310,26 @@
             <canvas id="viewCanvas" aria-label="Your wall with the selected door design"></canvas>
             <span class="live-pill"><i></i><span id="liveCode">Live preview</span></span>
             <div class="stage-loader" id="viewLoader" hidden>
-              <span class="spinner" aria-hidden="true"></span><span>Loading design…</span>
+              <span class="spinner" aria-hidden="true"></span><span data-i18n="loadingDesign">Loading design…</span>
             </div>
           </div>
           <div class="tools" role="toolbar" aria-label="Preview tools">
             <button class="tool" data-go="2">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
-              <span>Adjust<span class="tool-long"> corners</span></span>
+              <span data-i18n-html="adjust">Adjust<span class="tool-long"> corners</span></span>
             </button>
             <label class="tool-light">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-              <span class="tool-label">Light</span>
-              <input type="range" id="light" min="70" max="130" value="100" aria-label="Light">
+              <span class="tool-label" data-i18n="light">Light</span>
+              <input type="range" id="light" min="70" max="130" value="100" aria-label="Light" data-i18n-aria="light">
             </label>
             <button class="tool" id="download">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-              <span>Save<span class="tool-long"> picture</span></span>
+              <span data-i18n-html="save">Save<span class="tool-long"> picture</span></span>
+            </button>
+            <button class="tool" id="compareBtn" type="button" aria-label="Compare" data-i18n-aria="compare">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="7.5" height="16" rx="1.2"/></svg>
+              <span data-i18n="compare">Compare</span><b class="tool-badge" id="favCount" hidden>0</b>
             </button>
           </div>
         </div>
@@ -331,51 +342,76 @@
               <p class="sel-code" id="selCode">Pick a design</p>
               <p class="sel-cat" id="selCat">Tap any door in the collection to try it on your wall.</p>
             </div>
+            <button class="fav fav-sel" id="favSel" type="button" aria-pressed="false" aria-label="Save design" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg>
+            </button>
           </div>
           <div class="send">
             <button class="btn btn-wa" id="shareWa">
               <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.9a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.1 8.1 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
-              <span>Share on WhatsApp</span>
+              <span data-i18n="shareWa">Share on WhatsApp</span>
             </button>
             <a class="btn btn-wa-ghost" id="chatWa" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5V6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H9l-4 2.5Z"/></svg>
-              <span>Chat<span class="tool-long"> with us</span></span>
+              <span data-i18n-html="chat">Chat<span class="tool-long"> with us</span></span>
             </a>
           </div>
         </div>
-        <p class="send-note">Send the picture to <b id="waNumber"></b> — we'll reply with price &amp; availability.</p>
+        <p class="send-note" data-i18n-html="sendNote">Send the picture to <b id="waNumber"></b> — we'll reply with price &amp; availability.</p>
       </section>
 
       <aside class="gallery" aria-labelledby="galleryTitle">
         <div class="gallery-head">
           <div class="gh-title">
-            <h2 id="galleryTitle">Door collection</h2>
+            <h2 id="galleryTitle" data-i18n="collection">Door collection</h2>
             <span class="count" id="count" aria-live="polite"></span>
           </div>
           <div class="search">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
-            <input type="search" id="search" placeholder="Search design code, e.g. RD-114" autocomplete="off" aria-label="Search design code">
-            <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>
+            <input type="search" id="search" placeholder="Search design code, e.g. RD-114" autocomplete="off" aria-label="Search design code" data-i18n-ph="searchPh" data-i18n-aria="searchAria">
+            <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" data-i18n-aria="clearSearch" hidden>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
             </button>
           </div>
-          <div class="chips" id="brandChips" role="group" aria-label="Brand"></div>
-          <div class="chips chips-sub" id="catChips" role="group" aria-label="Catalog"></div>
+          <div class="chips" id="brandChips" role="group" aria-label="Brand" data-i18n-aria="brandGroup"></div>
+          <div class="chips chips-sub" id="catChips" role="group" aria-label="Catalog" data-i18n-aria="catGroup"></div>
+          <div class="chips chips-look" id="lookChips" role="group" aria-label="Colour" data-i18n-aria="lookGroup"></div>
         </div>
         <div class="grid" id="grid"></div>
         <div class="empty" id="empty" hidden>
           <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="6" width="22" height="36" rx="2"/><circle cx="30" cy="25" r="1.5"/><path d="M6 42h36"/></svg>
-          <p class="empty-title">No designs found</p>
+          <p class="empty-title" data-i18n="noneFound">No designs found</p>
           <p class="empty-text" id="emptyText">Try a different code or brand.</p>
-          <button class="btn btn-ghost" id="emptyReset" type="button">Show all designs</button>
+          <button class="btn btn-ghost" id="emptyReset" type="button" data-i18n="showAll">Show all designs</button>
         </div>
       </aside>
     </div>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog class="compare" id="compare" aria-labelledby="cmpTitle">
+      <div class="cmp-head">
+        <div>
+          <h2 id="cmpTitle" data-i18n="cmpTitle" tabindex="-1" autofocus>Compare on your wall</h2>
+          <p class="cmp-sub" id="cmpSub"></p>
+        </div>
+        <button class="cmp-close" id="cmpClose" type="button" aria-label="Close" data-i18n-aria="close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="cmp-grid" id="cmpGrid"></div>
+      <div class="cmp-foot">
+        <button class="btn btn-wa" id="cmpShare" type="button">
+          <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.9a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.1 8.1 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+          <span data-i18n="cmpShare">Send all on WhatsApp</span>
+        </button>
+      </div>
+    </dialog>
   </main>
 
-  <script src="js/config.js?v=5"></script>
-  <script src="js/warp.js?v=5"></script>
-  <script src="js/app.js?v=5"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js?v=6"></script>
+  <script src="js/i18n.js?v=6"></script>
+  <script src="js/warp.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
 </body>
 </html>

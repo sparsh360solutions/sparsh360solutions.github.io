@@ -7,7 +7,13 @@ then send the picture to Sparsh 360 on WhatsApp.
 - `admin.html` — owner page: add new supplier catalogs from PDF, rename/remove designs
 - `data/catalog.json` + `doors/` — all designs (1,132 from the first 9 catalogs)
 - `js/config.js` — **WhatsApp number goes here**
+- `js/i18n.js` — all customer-facing text in English, Hindi and Gujarati
 - `tools/extract_catalogs.py` — one-time script used for the first 9 catalogs
+- `tools/tag_looks.py` — tags every door's colour (light / medium / dark / white & grey / colourful) for the
+  gallery filter; doors added from the admin page are tagged automatically
+- `tools/make_rooms.py` — renders the sample rooms (`assets/rooms/`, `data/rooms.json`) for visitors without a photo
+
+Saved designs (♥) stay only in the visitor's own browser.
 
 ## Put it online (GitHub Pages, free)
 

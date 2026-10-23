@@ -1,0 +1,74 @@
+[
+ {
+  "id": "living",
+  "name": "Warm living room",
+  "img": "assets/rooms/living.jpg",
+  "thumb": "assets/rooms/t/living.jpg",
+  "quad": [
+   [
+    356.9,
+    489.6
+   ],
+   [
+    669.4,
+    489.6
+   ],
+   [
+    669.4,
+    1218.8
+   ],
+   [
+    356.9,
+    1218.8
+   ]
+  ]
+ },
+ {
+  "id": "bedroom",
+  "name": "Calm bedroom",
+  "img": "assets/rooms/bedroom.jpg",
+  "thumb": "assets/rooms/t/bedroom.jpg",
+  "quad": [
+   [
+    566.6,
+    524.7
+   ],
+   [
+    829.8,
+    538.7
+   ],
+   [
+    829.8,
+    1172.6
+   ],
+   [
+    566.6,
+    1200.7
+   ]
+  ]
+ },
+ {
+  "id": "modern",
+  "name": "Modern hallway",
+  "img": "assets/rooms/modern.jpg",
+  "thumb": "assets/rooms/t/modern.jpg",
+  "quad": [
+   [
+    690.0,
+    536.1
+   ],
+   [
+    999.9,
+    506.6
+   ],
+   [
+    999.9,
+    1292.9
+   ],
+   [
+    690.0,
+    1227.3
+   ]
+  ]
+ }
+]

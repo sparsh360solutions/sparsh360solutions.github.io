@@ -20,7 +20,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://sparsh360solutions.github.io"
 PHONE = "+91 70435 88033"
 WA = "917043588033"
-ASSET_V = "5"
+ASSET_V = "6"
 
 esc = html.escape
 

@@ -405,6 +405,35 @@ if (window.top !== window.self) { document.documentElement.hidden = true; window
     return c;
   }
 
+  // Colour look for the gallery filter: light | medium | dark | grey | colour.
+  // Same rules as tools/tag_looks.py — keep the two in sync.
+  function lookOf(thumb) {
+    const c = document.createElement("canvas");
+    c.width = 40; c.height = 82;
+    const x = c.getContext("2d", { willReadFrequently: true });
+    const w = thumb.width, h = thumb.height;
+    x.drawImage(thumb, w * .1, h * .06, w * .8, h * .88, 0, 0, 40, 82);
+    const px = x.getImageData(0, 0, 40, 82).data;
+    const lumas = [], chromas = [];
+    let colour = 0;
+    for (let i = 0; i < px.length; i += 4) {
+      const r = px[i], g = px[i + 1], b = px[i + 2];
+      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), ch = mx - mn;
+      lumas.push(.299 * r + .587 * g + .114 * b);
+      chromas.push(ch);
+      if (ch > 22) {
+        const hue = (mx === r ? (((g - b) / ch) % 6 + 6) % 6 : mx === g ? (b - r) / ch + 2 : (r - g) / ch + 4) * 60;
+        const wood = hue <= 55 || hue >= 340;
+        if (!wood && ch > 40) colour++;
+      }
+    }
+    const median = a => { a.sort((p, q) => p - q); const m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
+    const luma = median(lumas), chroma = median(chromas);
+    if (colour / (40 * 82) > .08) return "colour";
+    if (chroma < 16) return luma > 95 ? "grey" : "dark";
+    return luma > 138 ? "light" : luma > 82 ? "medium" : "dark";
+  }
+
   $("#publish").addEventListener("click", async () => {
     const st = $("#publishStatus"), btn = $("#publish");
     const total = add.pages.reduce((n, p) => n + p.doors.length, 0);
@@ -440,6 +469,7 @@ if (window.top !== window.self) { document.documentElement.hidden = true; window
           entries.push({
             id: `${slug}/${fname.slice(0, -4)}`, code, brand: add.meta.brand, catalog: add.meta.name, catalogId: slug,
             img: `doors/${slug}/${fname}`, thumb: `doors/${slug}/t/${fname}`, w: full.width, h: full.height, page: p.index + 1,
+            look: lookOf(thumb),
           });
           setStatus(st, `Preparing pictures… ${++made} of ${total}`);
         }
