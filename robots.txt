@@ -1,0 +1,22 @@
+# Sparsh 360 Door Studio
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /tools/
+Disallow: /docs/
+
+# AI answer engines are welcome to read and cite this site.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://sparsh360solutions.github.io/sitemap.xml

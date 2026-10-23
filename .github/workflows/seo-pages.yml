@@ -1,0 +1,26 @@
+# Rebuild the crawlable design pages, sitemap and llms.txt whenever the catalog changes
+# (e.g. after a new catalog is published from admin.html).
+name: Build SEO pages
+on:
+  push:
+    branches: [main]
+    paths: [data/catalog.json, tools/build_seo.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/build_seo.py
+      - name: Commit if changed
+        run: |
+          git config user.name "sparsh360-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add designs sitemap.xml llms.txt
+          git diff --cached --quiet || git commit -m "Rebuild SEO pages from catalog"
+          git push

@@ -33,7 +33,12 @@
     window.scrollTo(0, 0);
     syncTopbar();
     requestAnimationFrame(() => (n === 2 ? layoutMark() : n === 3 ? layoutView() : null));
+    if (n === 3 && pendingDesign && !state.door) { selectDoor(pendingDesign); pendingDesign = null; }
   }
+
+  // Deep link from the design catalogue pages: ?design=<id> preselects that door.
+  const designParam = new URLSearchParams(location.search).get("design");
+  let pendingDesign = null;
 
   // Expose the sticky header height to CSS so pinned panels sit right under it.
   function syncTopbar() {
@@ -431,7 +436,12 @@
     .then(r => r.json())
     .then(data => {
       state.data = data; renderChips(); renderGrid();
-      if (qaStep === 3 && data.doors.length) selectDoor(data.doors[0]);
+      if (designParam) {
+        pendingDesign = data.doors.find(d => d.id === designParam) || null;
+        if (pendingDesign) toast(`Design ${pendingDesign.code} selected — take a photo of your wall to try it`);
+        if (pendingDesign && state.step === 3) { selectDoor(pendingDesign); pendingDesign = null; }
+      }
+      if (qaStep === 3 && data.doors.length && !state.door) selectDoor(data.doors[0]);
     })
     .catch(() => {
       $("#count").textContent = "";
