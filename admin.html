@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparsh 360 Admin</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/admin.css?v=3">
+</head>
+<body class="admin">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><circle cx="15" cy="12" r="1"/></symbol>
+      <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9"/><path d="m17 6 3 3"/><path d="m15 8 2 2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/><path d="M9 7V4h6v3"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3.9L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.9 3.9L20 15"/><path d="M20 20v-5h-5"/></symbol>
+      <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3"/><rect x="7" y="13" width="10" height="8"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="./" class="brand" title="Back to the website"><img src="assets/logo-dark.png" alt="Sparsh 360"></a>
+      <span class="admin-tag">Catalog Manager</span>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Admin sections">
+      <button type="button" data-tab="connect" class="on"><svg class="ic"><use href="#i-link"/></svg><span>Connect</span></button>
+      <button type="button" data-tab="add"><svg class="ic"><use href="#i-upload"/></svg><span>Add catalog</span></button>
+      <button type="button" data-tab="manage"><svg class="ic"><use href="#i-grid"/></svg><span>Manage<span class="tab-x"> designs</span></span></button>
+    </nav>
+    <button type="button" class="conn-badge" id="connBadge" title="GitHub connection">
+      <span class="dot" aria-hidden="true"></span><span class="conn-text">Not connected</span>
+    </button>
+  </header>
+
+  <main class="admin-main">
+
+  <!-- Connect -->
+  <section id="tab-connect" class="panel">
+    <header class="page-head">
+      <p class="eyebrow">Setup</p>
+      <h1>Connect to GitHub</h1>
+      <p class="lead">Your website's designs live in a GitHub repository. Link it once with an access token so this page can publish catalogs for you. The token is stored only in this browser.</p>
+    </header>
+
+    <div class="connect-grid">
+      <form id="connectForm" class="form card">
+        <div class="card-head">
+          <span class="card-icon"><svg class="ic"><use href="#i-link"/></svg></span>
+          <div>
+            <h2>Repository details</h2>
+            <p class="muted">Where the website is hosted.</p>
+          </div>
+        </div>
+        <div class="field-row">
+          <label class="field">Repository owner <input name="owner" placeholder="e.g. sparsh360" required autocomplete="off" spellcheck="false"></label>
+          <label class="field">Repository name <input name="repo" placeholder="e.g. sparsh360.github.io" required autocomplete="off" spellcheck="false"></label>
+        </div>
+        <label class="field">Branch <input name="branch" value="main" required spellcheck="false"><span class="hint">Usually <b>main</b>. Leave it unless you know otherwise.</span></label>
+        <label class="field">Access token <input name="token" type="password" placeholder="github_pat_…" required autocomplete="off" spellcheck="false"><span class="hint">Needs <b>Contents: Read and write</b> on this repository.</span></label>
+        <p id="connectStatus" class="status"></p>
+        <div class="row form-actions">
+          <button class="btn btn-primary" type="submit"><svg class="ic"><use href="#i-check"/></svg>Save &amp; test</button>
+          <button class="btn btn-ghost" type="button" id="forget">Forget token</button>
+        </div>
+      </form>
+
+      <aside class="card help-card" aria-labelledby="helpTitle">
+        <div class="card-head">
+          <span class="card-icon gold"><svg class="ic"><use href="#i-key"/></svg></span>
+          <div>
+            <h2 id="helpTitle">How to get a token</h2>
+            <p class="muted">Takes about two minutes on GitHub.</p>
+          </div>
+        </div>
+        <ol class="steps-list">
+          <li>On GitHub, open <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens</b>.</li>
+          <li>Click <b>Generate new token</b>, choose <b>Only select repositories</b> and pick the website repository.</li>
+          <li>Under <b>Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>.</li>
+          <li>Generate, copy the token, and paste it into the form.</li>
+        </ol>
+        <a class="text-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Open GitHub token page <svg class="ic"><use href="#i-ext"/></svg></a>
+        <p class="note"><svg class="ic"><use href="#i-shield"/></svg><span>The token never leaves this computer except to talk to GitHub. Use <b>Forget token</b> on shared machines.</span></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Add catalog -->
+  <section id="tab-add" class="panel" hidden>
+    <header class="page-head with-stepper">
+      <div>
+        <p class="eyebrow">New catalog</p>
+        <h1>Add a catalog</h1>
+        <p class="lead">Upload the PDF your supplier sent. Doors are cut out automatically &mdash; you check them, then publish to the website.</p>
+      </div>
+      <ol class="stepper" id="addSteps" aria-label="Progress">
+        <li class="on" data-step="1"><span class="num">1</span><span class="lbl">Upload</span></li>
+        <li data-step="2"><span class="num">2</span><span class="lbl">Review</span></li>
+        <li data-step="3"><span class="num">3</span><span class="lbl">Publish</span></li>
+      </ol>
+    </header>
+
+    <div id="addStart">
+      <form id="addForm" class="form card add-card">
+        <label class="dropzone" id="dropzone">
+          <input type="file" name="pdf" accept="application/pdf" required>
+          <span class="dz-icon"><svg class="ic"><use href="#i-pdf"/></svg></span>
+          <span class="dz-title" id="dzTitle">Drop the catalog PDF here</span>
+          <span class="dz-sub" id="dzSub">or <u>browse your computer</u> &middot; PDF only</span>
+        </label>
+
+        <div class="add-fields">
+          <label class="field">Brand <input name="brand" list="brandList" placeholder="e.g. Ramdev" required autocomplete="off"></label>
+          <datalist id="brandList"></datalist>
+          <label class="field">Catalog name <input name="name" placeholder="e.g. Ramdev Doors Vol 3" required autocomplete="off"></label>
+          <label class="field"><span class="field-label">Code prefix <span class="opt">optional</span></span>
+            <input name="prefix" placeholder="e.g. RD-" autocomplete="off" spellcheck="false">
+            <span class="hint">Used when the PDF shows only numbers, e.g. "A-".</span></label>
+          <button class="btn btn-primary btn-block" type="submit">Process PDF<svg class="ic"><use href="#i-right"/></svg></button>
+          <p class="hint center">Nothing is published until you review and confirm.</p>
+        </div>
+      </form>
+    </div>
+
+    <div id="addProgress" class="card progress-card" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <h2>Reading the catalog&hellip;</h2>
+      <p class="muted">Finding each door and its design code. Keep this tab open.</p>
+      <div class="progress" role="presentation"><div id="progBar"></div></div>
+      <p id="progText" class="prog-text" aria-live="polite"></p>
+    </div>
+
+    <div id="review" hidden>
+      <div class="review-head card">
+        <div>
+          <h2 id="reviewTitle"></h2>
+          <p class="muted"><b id="doorTotal">0</b> doors found. Check each page: fix codes, remove anything that isn't a door, or draw a box around a missed door.</p>
+        </div>
+        <div class="row">
+          <button class="btn btn-ghost" id="cancelReview" type="button">Discard</button>
+          <button class="btn btn-primary" id="publish" type="button"><svg class="ic"><use href="#i-send"/></svg>Publish to website</button>
+        </div>
+      </div>
+      <p id="publishStatus" class="status" aria-live="polite"></p>
+
+      <div class="pager">
+        <div class="pager-nav">
+          <button class="btn btn-ghost btn-icon" id="prevPage" type="button" aria-label="Previous page"><svg class="ic"><use href="#i-left"/></svg></button>
+          <span id="pageLabel"></span>
+          <button class="btn btn-ghost btn-icon" id="nextPage" type="button" aria-label="Next page"><svg class="ic"><use href="#i-right"/></svg></button>
+        </div>
+        <ul class="legend" aria-label="Legend">
+          <li><i class="sw sw-door"></i>Detected door</li>
+          <li><i class="sw sw-sel"></i>Selected &mdash; drag to move, corners to resize</li>
+          <li class="kbd-tip"><kbd>Del</kbd> removes selected</li>
+        </ul>
+        <span class="spacer"></span>
+        <button class="btn btn-ghost" id="addBox" type="button"><svg class="ic"><use href="#i-plus"/></svg>Draw a door box</button>
+        <button class="btn btn-ghost danger" id="clearPage" type="button"><svg class="ic"><use href="#i-trash"/></svg>Clear page</button>
+      </div>
+      <div class="review-body">
+        <div class="page-stage"><canvas id="pageCanvas"></canvas></div>
+        <div class="door-panel">
+          <div class="door-panel-head"><span>Doors on this page</span><span class="muted">Type the code shown in the catalog</span></div>
+          <div class="door-list" id="doorList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manage -->
+  <section id="tab-manage" class="panel" hidden>
+    <header class="page-head with-actions">
+      <div>
+        <p class="eyebrow">Live website</p>
+        <h1>Manage designs</h1>
+        <p class="lead">Rename codes, remove designs, or retire a whole catalog. Nothing changes on the website until you save.</p>
+      </div>
+      <div class="row">
+        <button class="btn btn-ghost" id="reloadManage" type="button"><svg class="ic"><use href="#i-refresh"/></svg>Reload</button>
+        <button class="btn btn-primary" id="saveManage" type="button"><svg class="ic"><use href="#i-save"/></svg>Save changes</button>
+      </div>
+    </header>
+    <p id="manageStatus" class="status" aria-live="polite"></p>
+    <div class="manage-bar card">
+      <label class="field field-cat">Catalog <select id="manageCat"></select></label>
+      <label class="field">Brand <input id="manageBrand" placeholder="Brand" autocomplete="off"></label>
+      <label class="field">Catalog name <input id="manageName" placeholder="Catalog name" autocomplete="off"></label>
+      <button class="btn btn-ghost danger" id="deleteCat" type="button">Remove this catalog</button>
+    </div>
+    <div class="manage-grid" id="manageGrid"></div>
+  </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="js/admin-detect.js?v=3"></script>
+  <script src="js/admin.js?v=3"></script>
+</body>
+</html>
