@@ -1,0 +1,22 @@
+# Sparsh 360 — Doors | Interiors | Laminates
+
+> Sparsh 360 sells lamination (laminated) doors, interiors and laminates. Its free online Door Studio lets customers photograph their wall and preview any of 1132 lamination door designs on it, then enquire on WhatsApp (+91 70435 88033).
+
+## Key facts
+- Designs: 1132 lamination door designs from Aastha (479), Ramdev (250), Deluxe (206), Wonder Sign (197)
+- Each design has a supplier code (e.g. RD-114, WL-DG-1026, DX-3015, A-633) that customers can quote.
+- Contact: WhatsApp / phone +91 70435 88033 — price, sizes, finishes and delivery are shared on WhatsApp.
+- The Door Studio is free, works in the phone browser, and needs no app or sign-up.
+
+## Pages
+- [Door Studio — try doors on your wall](https://sparsh360solutions.github.io/)
+- [All lamination door designs](https://sparsh360solutions.github.io/designs/)
+- [Aastha lamination door designs](https://sparsh360solutions.github.io/designs/aastha.html)
+- [Ramdev lamination door designs](https://sparsh360solutions.github.io/designs/ramdev.html)
+- [Deluxe lamination door designs](https://sparsh360solutions.github.io/designs/deluxe.html)
+- [Wonder Sign lamination door designs](https://sparsh360solutions.github.io/designs/wonder-sign.html)
+
+## How the Door Studio works
+1. Take or upload a photo of the wall with the door frame.
+2. Drag 4 dots onto the corners of the door; the design is perspective-matched to the photo.
+3. Tap any design to see it on the wall, then share the picture on WhatsApp.
