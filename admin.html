@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'wasm-unsafe-eval'; worker-src 'self' blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://tessdata.projectnaptha.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sparsh 360 Admin</title>
   <meta name="robots" content="noindex">
@@ -12,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css?v=4">
-  <link rel="stylesheet" href="css/admin.css?v=4">
+  <link rel="stylesheet" href="css/base.css?v=5">
+  <link rel="stylesheet" href="css/admin.css?v=5">
 </head>
 <body class="admin">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -78,6 +80,7 @@
         </div>
         <label class="field">Branch <input name="branch" value="main" required spellcheck="false"><span class="hint">Usually <b>main</b>. Leave it unless you know otherwise.</span></label>
         <label class="field">Access token <input name="token" type="password" placeholder="github_pat_…" required autocomplete="off" spellcheck="false"><span class="hint">Needs <b>Contents: Read and write</b> on this repository.</span></label>
+        <label class="check"><input type="checkbox" name="remember"> Remember the token on this computer <span class="hint">Leave unticked on shared computers — it's then forgotten when you close the tab.</span></label>
         <p id="connectStatus" class="status"></p>
         <div class="row form-actions">
           <button class="btn btn-primary" type="submit"><svg class="ic"><use href="#i-check"/></svg>Save &amp; test</button>
@@ -213,8 +216,8 @@
 
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="js/admin-detect.js?v=4"></script>
-  <script src="js/admin.js?v=4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/admin-detect.js?v=5"></script>
+  <script src="js/admin.js?v=5"></script>
 </body>
 </html>

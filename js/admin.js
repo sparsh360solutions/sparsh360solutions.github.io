@@ -1,4 +1,5 @@
 // Sparsh 360 admin: add catalogs from PDFs and manage designs, publishing to GitHub.
+if (window.top !== window.self) { document.documentElement.hidden = true; window.top.location = window.self.location.href; }
 (() => {
   const $ = s => document.querySelector(s);
   const STORE = "sparsh-admin";
@@ -47,11 +48,18 @@
   }
 
   // ---------- GitHub ----------
-  let conn = null;
-  try { conn = JSON.parse(localStorage.getItem(STORE) || "null"); } catch { conn = null; }
+  // Repo details are remembered; the token lives only for this browser tab unless
+  // "Remember on this computer" is ticked (then localStorage). Never sent anywhere but api.github.com.
+  const TOKEN_KEY = STORE + "-token";
+  const safeName = v => /^[A-Za-z0-9_.-]{1,100}$/.test(v);
+  const readJSON = (store, key) => { try { return JSON.parse(store.getItem(key) || "null"); } catch { return null; } };
+  let conn = readJSON(localStorage, STORE);
+  if (conn?.token) { localStorage.setItem(TOKEN_KEY, conn.token); delete conn.token; localStorage.setItem(STORE, JSON.stringify(conn)); } // migrate old saves
+  if (conn) conn.token = sessionStorage.getItem(TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || "";
 
   const cf = $("#connectForm");
   if (conn) for (const k of ["owner", "repo", "branch", "token"]) cf[k].value = conn[k] || "";
+  if (cf.remember) cf.remember.checked = !!localStorage.getItem(TOKEN_KEY);
   updateBadge();
 
   async function gh(path, opts = {}) {
@@ -129,9 +137,16 @@
     const st = $("#connectStatus");
     setStatus(st, "Checking…");
     try {
+      if (!safeName(conn.owner) || !safeName(conn.repo) || !/^[A-Za-z0-9_./-]{1,100}$/.test(conn.branch) || conn.branch.includes(".."))
+        throw new Error("Owner, repository and branch may only contain letters, numbers, - _ and .");
+      if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(conn.token))
+        throw new Error("That doesn't look like a GitHub token (it should start with github_pat_).");
       const repo = await gh("");
       if (!repo.permissions?.push) throw new Error("This token can read the repository but cannot publish. Give it Contents: Read and write.");
-      localStorage.setItem(STORE, JSON.stringify(conn));
+      const { token, ...details } = conn;
+      localStorage.setItem(STORE, JSON.stringify(details));
+      sessionStorage.setItem(TOKEN_KEY, token);
+      if (cf.remember?.checked) localStorage.setItem(TOKEN_KEY, token); else localStorage.removeItem(TOKEN_KEY);
       updateBadge();
       setStatus(st, `Connected to ${repo.full_name}. You can add catalogs now.`, "ok");
       manage.data = null;
@@ -141,6 +156,8 @@
   });
   $("#forget").addEventListener("click", () => {
     localStorage.removeItem(STORE);
+    localStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(TOKEN_KEY);
     cf.token.value = "";
     conn = null;
     updateBadge();
@@ -149,7 +166,8 @@
 
   // Brand suggestions from the live site data.
   fetch("data/catalog.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
-    $("#brandList").innerHTML = [...new Set(d.catalogs.map(c => c.brand))].map(b => `<option value="${b}">`).join("");
+    const list = $("#brandList");
+    list.replaceChildren(...[...new Set(d.catalogs.map(c => c.brand))].map(b => Object.assign(document.createElement("option"), { value: b })));
   }).catch(() => {});
 
   // ---------- Add catalog ----------
@@ -190,7 +208,7 @@
     $("#progText").textContent = "Opening the PDF…";
     try {
       const data = new Uint8Array(await f.pdf.files[0].arrayBuffer());
-      add.pdf = await pdfjsLib.getDocument({ data }).promise;
+      add.pdf = await pdfjsLib.getDocument({ data, isEvalSupported: false }).promise;
       add.pages = [];
       for (let i = 0; i < add.pdf.numPages; i++) {
         $("#progText").textContent = `Page ${i + 1} of ${add.pdf.numPages} — ${add.pages.reduce((n, p) => n + p.doors.length, 0)} doors so far`;
@@ -467,10 +485,10 @@
 
   function renderManage() {
     const d = manage.data, sel = $("#manageCat");
-    sel.innerHTML = d.catalogs.map(c => {
+    sel.replaceChildren(...d.catalogs.map(c => {
       const n = d.doors.filter(x => x.catalogId === c.id).length;
-      return `<option value="${c.id}">${manage.dropCats.has(c.id) ? "✕ " : ""}${c.brand} — ${c.name} (${n})</option>`;
-    }).join("");
+      return new Option(`${manage.dropCats.has(c.id) ? "✕ " : ""}${c.brand} — ${c.name} (${n})`, c.id);
+    }));
     sel.value = manage.cat;
     const cat = d.catalogs.find(c => c.id === manage.cat);
     $("#manageBrand").value = cat?.brand || "";
