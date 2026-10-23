@@ -20,3 +20,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://sparsh360solutions.github.io/sitemap.xml
+Sitemap: https://sparsh360solutions.github.io/sitemap.txt

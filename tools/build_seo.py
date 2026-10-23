@@ -4,6 +4,7 @@ Generates:
   designs/index.html          all brands and catalogs
   designs/<brand>.html        every design of one brand, grouped by catalog
   sitemap.xml                 pages + door images (image sitemap)
+  sitemap.txt                 plain list of page URLs
   llms.txt                    plain-text summary for AI answer engines
 
 Runs locally (python tools/build_seo.py) and in GitHub Actions whenever the catalog changes,
@@ -206,6 +207,8 @@ def build():
         sm.append("  </url>")
     sm.append("</urlset>\n")
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(sm))
+    # Plain-text sitemap as a simple fallback for search consoles.
+    open(os.path.join(ROOT, "sitemap.txt"), "w", encoding="utf-8").write("\n".join(u for u, _, _ in urls) + "\n")
 
     # ---- llms.txt ----
     lines = [
