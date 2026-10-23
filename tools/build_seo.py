@@ -83,7 +83,7 @@ def footer(brands):
     return f"""  <footer class="d-foot">
     <div class="d-wrap">
       <nav aria-label="Brands">{links} <a href="./">All designs</a></nav>
-      <p>Sparsh 360&trade; &middot; Doors | Interiors | Laminates &middot; WhatsApp <a href="https://wa.me/{WA}">{PHONE}</a></p>
+      <p>Sparsh 360&trade; &middot; Doors | Interiors | Laminates &middot; Vadodara, Gujarat &middot; WhatsApp <a href="https://wa.me/{WA}">{PHONE}</a></p>
     </div>
   </footer>
 </body>
@@ -110,6 +110,8 @@ def org_ld():
         "logo": f"{SITE}/assets/icons/android-chrome-512x512.png",
         "image": f"{SITE}/assets/og-image.jpg",
         "telephone": PHONE,
+        "address": {"@type": "PostalAddress", "addressLocality": "Vadodara", "addressRegion": "Gujarat", "addressCountry": "IN"},
+        "areaServed": [{"@type": "City", "name": "Vadodara"}, {"@type": "State", "name": "Gujarat"}],
         "sameAs": [f"https://wa.me/{WA}"],
     }
 
@@ -129,10 +131,10 @@ def build():
         bdoors = [d for d in doors if d["brand"] == b]
         bcats = [c for c in cats if c["brand"] == b]
         path = f"designs/{slug(b)}.html"
-        title = f"{b} Lamination Door Designs ({len(bdoors)}) – Try on Your Wall | Sparsh 360"
+        title = f"{b} Lamination Door Designs ({len(bdoors)}) in Vadodara | Sparsh 360"
         desc = (f"Browse {len(bdoors)} {b} lamination door designs with design codes"
                 f"{' (e.g. ' + ', '.join(d['code'] for d in bdoors[:3]) + ')' if bdoors else ''}. "
-                f"See any design on your own wall and get the price on WhatsApp from Sparsh 360.")
+                f"See any design on your own wall and get the price on WhatsApp from Sparsh 360, Vadodara.")
         ld = {"@context": "https://schema.org", "@graph": [
             org_ld(),
             {"@type": "CollectionPage", "name": f"{b} lamination door designs", "url": f"{SITE}/{path}",
@@ -149,7 +151,7 @@ def build():
         parts = [head(title, desc, path, ld), topbar(), '  <main class="d-wrap">\n']
         parts.append(f'    <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="./">Door designs</a> / <span>{esc(b)}</span></nav>\n')
         parts.append(f'    <h1>{esc(b)} lamination door designs</h1>\n')
-        parts.append(f'    <p class="d-lead">{len(bdoors)} {esc(b)} laminate door designs available at Sparsh 360, '
+        parts.append(f'    <p class="d-lead">{len(bdoors)} {esc(b)} laminate door designs available at Sparsh 360, Vadodara, '
                      f'across {len(bcats)} catalog{"s" if len(bcats) != 1 else ""}. Tap any design to see it on a photo of your own wall, '
                      f'then send it to us on WhatsApp ({PHONE}) for price, sizes and delivery.</p>\n')
         parts.append('    <nav class="d-chips" aria-label="Brands">' + "".join(
@@ -166,7 +168,7 @@ def build():
 
     # ---- index ----
     path = "designs/index.html"
-    title = f"Lamination Door Designs Catalogue – {len(doors)}+ Designs | Sparsh 360"
+    title = f"Lamination Door Designs Catalogue – {len(doors)}+ Designs | Sparsh 360 Vadodara"
     desc = (f"{len(doors)} lamination door designs from {', '.join(brands)}. "
             "Browse by brand and design code, try any door on your own wall, and enquire on WhatsApp.")
     ld = {"@context": "https://schema.org", "@graph": [
@@ -209,13 +211,14 @@ def build():
     lines = [
         "# Sparsh 360 — Doors | Interiors | Laminates",
         "",
-        "> Sparsh 360 sells lamination (laminated) doors, interiors and laminates. Its free online Door Studio "
+        "> Sparsh 360 (Vadodara, Gujarat, India) sells lamination (laminated) doors, interiors and laminates. Its free online Door Studio "
         f"lets customers photograph their wall and preview any of {len(doors)} lamination door designs on it, "
         f"then enquire on WhatsApp ({PHONE}).",
         "",
         "## Key facts",
         f"- Designs: {len(doors)} lamination door designs from " + ", ".join(
             f"{b} ({sum(1 for d in doors if d['brand'] == b)})" for b in brands),
+        "- Location: Vadodara, Gujarat, India. Serves customers across Vadodara and Gujarat.",
         "- Each design has a supplier code (e.g. RD-114, WL-DG-1026, DX-3015, A-633) that customers can quote.",
         f"- Contact: WhatsApp / phone {PHONE} — price, sizes, finishes and delivery are shared on WhatsApp.",
         "- The Door Studio is free, works in the phone browser, and needs no app or sign-up.",
