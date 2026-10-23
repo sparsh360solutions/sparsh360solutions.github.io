@@ -419,3 +419,8 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
   .admin *, .admin *::before, .admin *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* "Remember token" checkbox */
+.check { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-weight: 600; font-size: 13.5px; color: var(--taupe); cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--wood); margin: 0; }
+.check .hint { flex-basis: 100%; padding-left: 28px; }

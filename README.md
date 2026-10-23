@@ -40,3 +40,15 @@ then send the picture to Sparsh 360 on WhatsApp.
 python -m http.server 8000
 ```
 then open http://localhost:8000.
+
+## Security
+
+- No server and no database: customer photos never leave the customer's phone (the preview is drawn in the browser).
+- The only secret is the admin's GitHub token. It is a fine-grained token limited to this one repository
+  (Contents: read/write), kept only in the admin's browser — for the current tab by default, or on that computer
+  if "Remember" is ticked — and sent only to `api.github.com`. Use **Forget token** on shared computers.
+  If a token is ever exposed, delete it on GitHub (Settings → Developer settings → Fine-grained tokens) and make a new one.
+- Every page has a Content-Security-Policy; the public pages load scripts only from this site.
+  The admin page also loads pdf.js (cdnjs) and Tesseract (jsDelivr), pinned with Subresource Integrity hashes.
+- The admin page refuses to run inside a frame (clickjacking) and is excluded from search engines.
+- Repository: secret scanning + push protection and Dependabot security updates are on; workflow actions are pinned to commit SHAs.

@@ -176,6 +176,9 @@ const Detect = (() => {
         await new Promise((res, rej) => {
           const s = document.createElement("script");
           s.src = "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+          s.integrity = "sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F";
+          s.crossOrigin = "anonymous";
+          s.referrerPolicy = "no-referrer";
           s.onload = res; s.onerror = rej; document.head.appendChild(s);
         });
       }
